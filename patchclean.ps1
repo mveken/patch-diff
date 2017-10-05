@@ -35,7 +35,7 @@ VERSION HISTORY
 ================
 
 Oct 20, 2016 - Version 1   - Initial Release
-Oct 4,  2017 - Version 1.1 - Added Month and Year parameters for easy Patch Tuesday date setting
+Oct 4,  2017 - Version 1.1 - Added Month and Year parameters for easy Patch Tuesday date setting (Martijn Veken)
 
 ==========
 LICENSING
@@ -95,10 +95,8 @@ else
 {
     try
     {
-        [datetime]$SearchDate=$YEAR + '-' + $MONTH + "-1" 
-
+        [datetime]$SearchDate = "$YEAR-$MONTH-1" 
         while ([int] $SearchDate.DayofWeek -ine 2 ) { $SearchDate=$SearchDate.AddDays(1) }
-
         $PatchDate = $SearchDate.AddDays(7)
     }
     catch
